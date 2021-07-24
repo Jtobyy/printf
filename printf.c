@@ -7,7 +7,7 @@
 */
 int _printf(const char *format, ...)
 {
-va_list ap; 
+va_list ap;
 int n;
 int i;
 char s;
@@ -18,8 +18,7 @@ while (format[i] != '\0')
 i++;
 if (format[0] != '%' || i > 2)
 {
-char err_mssg[400] = "error: Format should start with a % sign followed by the format \
-specifier which is a single character c, s, d or  i";
+char err_mssg[400] = "error: _printf(\"%[format_char]\", ..).";
 i = 0;
 while (err_mssg[i] != '\0')
 {
@@ -36,7 +35,7 @@ switch (f)
 {
 case 's':
 p = va_arg(ap, char *);
-n = str_f(p);  
+n = str_f(p);
 break;
 case 'c':
 case '%':
