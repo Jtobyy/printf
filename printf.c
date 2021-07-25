@@ -12,7 +12,6 @@ int n;
 int i;
 char s;
 char f;
-char *p;
 i = 0;
 while (format[i] != '\0')
 i++;
@@ -31,6 +30,22 @@ return (0);
 }
 va_start(ap, format);
 f = format[1];
+n = swtch_f(f, ap);
+return (n);
+}
+
+/**
+ *swtch_f - does the conditional op for printf
+ *@f: format character
+ *@ap: variable of type va_list
+ *Return: number of characters printed to stdout
+ */
+int swtch_f(char f, va_list ap)
+{
+int i;
+int n;
+char s;
+char *p;
 switch (f)
 {
 case 's':
