@@ -36,3 +36,13 @@ putchar(c);
 putchar('\n');
 return (n);
 }
+
+
+/**
+ *int_f - prints out an integer to stdout
+ *@i: character to print
+ *Return: number of digits prited
+ */
+int int_f(int i)
+{
+}

@@ -42,6 +42,11 @@ case '%':
 s = (char)va_arg(ap, int);
 n = char_f(s);
 break;
+case 'd':
+case 'i':
+i = va_arg(ap, int);
+n = int_f(i);
+break;
 }
 return (n);
 }
