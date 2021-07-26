@@ -19,9 +19,6 @@ n++;
 }
 s = p[i];
 putchar(s);
-putchar('\n');
-printf("length of prv is: %d", n);
-putchar('\n');
 return (n);
 }
 
@@ -35,9 +32,6 @@ int char_f(char c)
 int n;
 n = 1;
 putchar(c);
-putchar('\n');
-printf("length of prv is: %d", n);
-putchar('\n');
 return (n);
 }
 
@@ -51,8 +45,5 @@ int int_f(int i)
 {
 int n;
 n = print_number(i);
-putchar('\n');
-printf("length of prv is: %d", n);
-putchar('\n');
 return (n);
 }

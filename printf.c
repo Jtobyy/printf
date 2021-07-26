@@ -10,27 +10,38 @@ int _printf(const char *format, ...)
 va_list ap;
 int n;
 int i;
+int j;
 char s;
 char f;
 i = 0;
+n = 0;
 while (format[i] != '\0')
 i++;
-if (format[0] != '%' || i > 2)
-{
-char err_mssg[400] = "error: _printf(\"%[format_char]\", ..).";
-i = 0;
-while (err_mssg[i] != '\0')
-{
-s = err_mssg[i];
-putchar(s);
-i++;
-}
-putchar('\n');
-return (0);
-}
 va_start(ap, format);
-f = format[1];
-n = swtch_f(f, ap);
+for (j = 0; j < i; j++)
+{
+if (format[j] == '%')
+{
+j += 1;
+if (format[j] == '%')
+{
+putchar('%');
+n++;
+continue;
+}
+else
+{
+f = format[j];
+n += swtch_f(f, ap);
+}
+}
+else
+{
+s = format[j];
+putchar(s);
+n++;
+}
+}
 return (n);
 }
 
@@ -53,7 +64,6 @@ p = va_arg(ap, char *);
 n = str_f(p);
 break;
 case 'c':
-case '%':
 s = (char)va_arg(ap, int);
 n = char_f(s);
 break;
