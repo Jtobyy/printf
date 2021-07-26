@@ -57,6 +57,7 @@ int i;
 int n;
 char s;
 char *p;
+unsigned int j; 
 switch (f)
 {
 case 's':
@@ -75,6 +76,10 @@ break;
 case 'b':
 i = va_arg(ap, int);
 n = binary_f(i);
+break;
+case 'u':
+j = va_arg(ap, unsigned int);
+n = usigned_f(j);
 break;
 default:
 putchar('%');

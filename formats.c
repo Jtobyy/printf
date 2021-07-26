@@ -70,3 +70,7 @@ c += binary_f(i);
 putchar(rem + '0');
 return (c);
 }
+
+/**
+ *usigned_f - prints out an unsigned integer
+ *@j: unsigned integer value
