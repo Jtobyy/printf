@@ -8,7 +8,7 @@ SYNOPSIS
               _printf OPTION
 
 DESCRIPTION
-       Print ARGUMENT(s) according to FORMAT, 
+       Print ARGUMENT(s) according to FORMAT,
    FORMAT could be:
 
 %c: character
@@ -20,3 +20,11 @@ DESCRIPTION
 %d: a decimal integer
 
 %i: an integer
+
+%u: unsigned int
+
+%o: unsigned octal integer
+
+%x: unsigned hex int (uses lowercase)
+
+%X: unsigned hex int (uses uppercase)
