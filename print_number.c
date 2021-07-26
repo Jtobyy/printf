@@ -73,3 +73,36 @@ d++;
 }
 return (d);
 }
+
+/**
+ *print_usigned_number - prints an unsigned int
+ *@n: unsigned int
+ *Return: no of chars printed
+ */
+int print_usigned_number(unsigned int n)
+{
+unsigned int quo;
+int i;
+int p;
+int c;
+i = 0;
+c = 0;
+quo = n;
+while (quo >= 10)
+{
+quo = quo / 10;
+i++;
+}
+putchar(quo + '0');
+c++;
+p = _pow10(i);
+n = (n - (quo *p));
+c += add_zeros(n, p);
+if (n >= 10)
+return (c + print_usigned_number(n));
+else
+{
+putchar(n + '0');
+return (c + 1);
+}
+}

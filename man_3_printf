@@ -1,0 +1,22 @@
+_PRINTF         User Commands        _PRINTF
+
+NAME
+       _printf - format and print data
+
+SYNOPSIS
+      _printf FORMAT [ARGUMENT]...
+              _printf OPTION
+
+DESCRIPTION
+       Print ARGUMENT(s) according to FORMAT, 
+   FORMAT could be:
+
+%c: character
+
+%s: string
+
+%%: a single %
+
+%d: a decimal integer
+
+%i: an integer

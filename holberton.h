@@ -13,5 +13,10 @@ int add_zeros(int n, int p);
 int print_number(int n);
 int swtch_f(char f, va_list ap);
 int binary_f(int i);
+int usigned_f(unsigned int);
+int print_usigned_number(unsigned int n);
+int oct_f(unsigned int j);
+int hex_f(unsigned int j, char s);
+void lim_itoa(char a[], unsigned int n[], unsigned int j);
 
 #endif /* _PRINTF_H_ */

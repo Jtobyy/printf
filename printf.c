@@ -53,11 +53,9 @@ return (n);
  */
 int swtch_f(char f, va_list ap)
 {
-int i;
-int n;
-char s;
-char *p;
-unsigned int j; 
+int i, n;
+char *p, s;
+unsigned int j;
 switch (f)
 {
 case 's':
@@ -81,10 +79,18 @@ case 'u':
 j = va_arg(ap, unsigned int);
 n = usigned_f(j);
 break;
+case 'o':
+j = va_arg(ap, unsigned int);
+n = oct_f(j);
+break;
+case 'X':
+case 'x':
+j = va_arg(ap, unsigned int);
+n = hex_f(j, f);
+break;
 default:
 putchar('%');
 putchar(f);
-break;
 }
 return (n);
 }

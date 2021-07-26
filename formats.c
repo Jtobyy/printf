@@ -49,28 +49,13 @@ return (n);
 }
 
 /**
- *binary_f - converts a number to binary and prints
- *its ressult.
- *@i: given number
- *Return: no of chars printed
- */
-int binary_f(int i)
-{
-int rem;
-int c;
-c = 1;
-rem = i % 2;
-if (i == 1)
-{
-putchar(1 + '0');
-return (1);
-}
-i /= 2;
-c += binary_f(i);
-putchar(rem + '0');
-return (c);
-}
-
-/**
  *usigned_f - prints out an unsigned integer
  *@j: unsigned integer value
+ *Return: no of chars printed
+ */
+int usigned_f(unsigned int j)
+{
+int n;
+n = print_usigned_number(j);
+return (n);
+}
