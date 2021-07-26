@@ -17,6 +17,7 @@ int len;
     unsigned int ui __attribute__((unused));
     void *addr __attribute__((unused));
 
+    printf("%d", 1/2);
     len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");
     ui = (unsigned int)INT_MAX + 1024;
@@ -43,5 +44,13 @@ int len;
     printf("Len:[%d]\n", len2);
     /*    _printf("Unknown:[%r]\n");
 	  printf("Unknown:[%r]\n");*/
+     printf("Binary:[%b]\n", 98);
+len= _printf("Binary:[%b]\n", 98);
+ _printf("Len:[%d]\n", len);
+ len= _printf("Binary:[%b]\n", 3);
+  _printf("Len:[%d]\n", len);
+   len= _printf("Binary:[%b]\n", 4);
+     _printf("Len:[%d]\n", len);
+   
   return (0);
 }
