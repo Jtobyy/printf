@@ -12,5 +12,6 @@ int _pow10(int);
 int add_zeros(int n, int p);
 int print_number(int n);
 int swtch_f(char f, va_list ap);
+int binary_f(int i);
 
 #endif /* _PRINTF_H_ */

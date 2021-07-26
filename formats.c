@@ -47,3 +47,26 @@ int n;
 n = print_number(i);
 return (n);
 }
+
+/**
+ *binary_f - converts a number to binary and prints
+ *its ressult.
+ *@i: given number
+ *Return: no of chars printed
+ */
+int binary_f(int i)
+{
+int rem;
+int c;
+c = 1;
+rem = i % 2;
+if (i == 1)
+{
+putchar(1 + '0');
+return (1);
+}
+i /= 2;
+c += binary_f(i);
+putchar(rem + '0');
+return (c);
+}

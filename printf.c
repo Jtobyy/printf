@@ -72,6 +72,14 @@ case 'i':
 i = va_arg(ap, int);
 n = int_f(i);
 break;
+case 'b':
+i = va_arg(ap, int);
+n = binary_f(i);
+break;
+default:
+putchar('%');
+putchar(f);
+break;
 }
 return (n);
 }
