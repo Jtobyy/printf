@@ -28,3 +28,9 @@ DESCRIPTION
 %x: unsigned hex int (uses lowercase)
 
 %X: unsigned hex int (uses uppercase)
+
+Return value:
+successful: returns the number of characters printed (excluding the null byte)
+error: returns negative value 
+
+

@@ -7,110 +7,45 @@
 */
 int _printf(const char *format, ...)
 {
-va_list ap;
-int j;
-int b;
-char buf[1024];
-buf[0] = '\0';
-va_start(ap, format);
-for (j = 0; format[j] != '\0'; j++)
+va_list arguments;
+va_start(arguments,format);
+int count = 0;
+while (*format != '\0')
 {
-if (format[j] == '%')
+if (*format == '%')
 {
-j += 1;
-if (format[j] == '%')
+*format++;
+if (*format == '%')
 {
-strapd(buf, '%');
+count++;
+putchar('%');
+*format ++;
 continue;
 }
-else
-swtch_f(buf, format[j], ap);
-}
-else
-b += strapd(buf, format[j]);
-}
-for (j = 0; buf[j] != '\0'; j++)
+if (*format == 'c')
+{
+int ch = va_arg(arguments , int);
+count++;
+putchar(ch);
+*format ++;
 continue;
-write(1, &buf, (j + 1));
-return (b);
 }
-
-/**
- *strapd - appends c to buf
- *@buf: buf
- *@c: char to append
- *Return: void
- */
-int strapd(char buf[], char c)
+if (*format == 's')
 {
-int i;
-i = 0;
-while (buf[i] != '\0')
-i++;
-if (i < 1024)
+char* str = va_arg(arguments , char*);
+while(*str != '\0')
 {
-buf[i] = c;
-buf[i + 1] = '\0';
-return (i);
+count ++;
+putchar(*str);
+*str++;
 }
-else
-{
-write(1, &buf, 1023);
-i = 0;
-buf[i] = c;
-buf[i + 1] = '\0';
-return (1023 + i);
+*format ++;
+continue;
+}
+return 0;
+}
+count++;
+putchar(*format);
+*format ++;
 }
 }
-
-/**
- *swtch_f - does the conditional op for printf
- *@buf: current buffer
- *@f: format character
- *@ap: variable of type va_list
- *Return: number of characters printed to stdout
- */
-void swtch_f(char buf[], char f, va_list ap)
-{
-int i;
-char *p, s;
-unsigned int j;
-switch (f)
-{
-case 's':
-p = va_arg(ap, char *);
-str_f(buf, p);
-break;
-case 'c':
-s = (char)va_arg(ap, int);
-char_f(buf, s);
-break;
-case 'd':
-case 'i':
-i = va_arg(ap, int);
-int_f(buf, i);
-break;
-case 'b':
-i = va_arg(ap, int);
-binary_f(buf, i);
-break;
-case 'u':
-j = va_arg(ap, unsigned int);
-usigned_f(buf, j);
-break;
-case 'o':
-j = va_arg(ap, unsigned int);
-oct_f(buf, j);
-break;
-case 'X':
-case 'x':
-j = va_arg(ap, unsigned int);
-hex_f(buf, j, f);
-break;
-default:
-strapd(buf, '%');
-strapd(buf, f);
-}
-return;
-}
-
