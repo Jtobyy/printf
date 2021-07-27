@@ -60,7 +60,7 @@ write(1, &buf, 1023);
 i = 0;
 buf[i] = c;
 buf[i + 1] = '\0';
-return (1023 + (i + 1));
+return (1023 + (i + 1);
 }
 }
 
