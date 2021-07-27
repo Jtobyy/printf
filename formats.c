@@ -2,37 +2,30 @@
 
 /**
  *str_f - prints a string to sdout
+ *@buf: current buffer
  *@p: pointer to string
  *Return: number of characters printed
  */
-int str_f(char *p)
+void str_f(char buf[], char *p)
 {
 int i;
-int n;
-char s;
-n = 0;
+i = 0;
 for (i = 0; p[i] != '\0'; i++)
-{
-s = p[i];
-putchar(s);
-n++;
+strapd(buf, p[i]);
 }
-s = p[i];
-putchar(s);
-return (n);
+return;
 }
 
 /**
  *char_f - prints out a character to stdout
+ *@buf: current buffer
  *@c: character to print
  *Return: 1
  */
-int char_f(char c)
+void char_f(char buf[], char c)
 {
-int n;
-n = 1;
-putchar(c);
-return (n);
+strapd(buf, c);
+return;
 }
 
 
@@ -41,11 +34,10 @@ return (n);
  *@i: character to print
  *Return: number of digits prited
  */
-int int_f(int i)
+void int_f(char buf[], int i)
 {
-int n;
-n = print_number(i);
-return (n);
+print_number(buf, i);
+return;
 }
 
 /**
@@ -53,9 +45,8 @@ return (n);
  *@j: unsigned integer value
  *Return: no of chars printed
  */
-int usigned_f(unsigned int j)
+usigned_f(char buf[], unsigned int j)
 {
-int n;
-n = print_usigned_number(j);
-return (n);
+print_usigned_number(buf, j);
+return;
 }

@@ -6,18 +6,16 @@
  *Return: void
  */
 
-int print_number(int n)
+void print_number(char buf[], int n)
 {
 int quo;
 int i;
 int p;
-int c;
 i = 0;
-c = 0;
 quo = n;
 if (n < 0)
 {
-putchar('-');
+strapd(buf, '-');
 n = 0 - n;
 return (1 + print_number(n));
 }
@@ -26,17 +24,16 @@ while (quo >= 10)
 quo = quo / 10;
 i++;
 }
-putchar(quo + '0');
-c++;
+strapd(buf, (quo + '0'));
 p = _pow10(i);
 n = (n - (quo *p));
-c += add_zeros(n, p);
+add_zeros(buf, n, p);
 if (n >= 10)
-return (c + print_number(n));
+print_number(buf, n));
 else
 {
-putchar(n + '0');
-return (c + 1);
+strapd(buf, (n + '0'));
+return;
 }
 }
 
@@ -61,17 +58,12 @@ return (tmp);
  *@p: Power of MSD of initial integer
  *Return: void
  */
-int add_zeros(int n, int p)
+void add_zeros(char buf[], int n, int p)
 {
 int i;
-int d;
-d = 0;
 for (i = p / 10; i > 1 && n < i; i = i / 10)
-{
-putchar(0 + '0');
-d++;
-}
-return (d);
+strapd(buf, 0 + '0');
+return;
 }
 
 /**
@@ -79,30 +71,27 @@ return (d);
  *@n: unsigned int
  *Return: no of chars printed
  */
-int print_usigned_number(unsigned int n)
+void print_usigned_number(char buf[], unsigned int n)
 {
 unsigned int quo;
 int i;
 int p;
-int c;
 i = 0;
-c = 0;
 quo = n;
 while (quo >= 10)
 {
 quo = quo / 10;
 i++;
 }
-putchar(quo + '0');
-c++;
+strapd(buf, (quo + '0'));
 p = _pow10(i);
 n = (n - (quo *p));
-c += add_zeros(n, p);
+add_zeros(buf, n, p);
 if (n >= 10)
-return (c + print_usigned_number(n));
+print_usigned_number(buf, n));
 else
 {
-putchar(n + '0');
-return (c + 1);
+strapd(buf, (n + '0'));
+return;
 }
 }

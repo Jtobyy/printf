@@ -3,59 +3,57 @@
 /**
  *binary_f - converts a number to binary and prints
  *its ressult.
+ *@buf: current buffer
  *@i: given number
  *Return: no of chars printed
  */
-int binary_f(int i)
+void binary_f(char buf[], int i)
 {
 int rem;
-int c;
-c = 1;
 rem = i % 2;
 if (i == 1)
 {
-putchar(1 + '0');
-return (1);
+strapd(buf, (1 + '0'));
+return;
 }
 i /= 2;
-c += binary_f(i);
-putchar(rem + '0');
-return (c);
+binary_f(buf, i);
+strapd(buf, (rem + '0'));
+return;
 }
 
 /**
  *oct_f - converts a number to given base 8 and
  *prints it out
+ *@buf: current buffer
  *@j: no to be printed or converted
  *Return: no of chars printed
  */
-int oct_f(unsigned int j)
+void oct_f(char buf[], unsigned int j)
 {
 int rem;
-int c;
-c = 1;
 if (j < 8)
 {
-putchar(j + '0');
-return (1);
+strapd(buf, (j + '0'));
+return;
 }
 rem = j % 8;
 j /= 8;
-c += oct_f(j);
-putchar(rem + '0');
-return (c);
+oct_f(buf, j);
+strapd(buf, (rem + '0'));
+return;
 }
 
 /**
  *hex_f - hexadecimal no converter
+ *@buf: current buffer
  *@j: unsigned in to be converted
  *@s: indicator to use uppercase or lowercase
  *Return: no of chars printed
  */
-int hex_f(unsigned int j, char s)
+void hex_f(char buf[], unsigned int j, char s)
 {
 unsigned int rem;
-int c;
 int i;
 char a[6] = {'a', 'b', 'c', 'd', 'e', 'f'};
 unsigned int n[6] = {10, 11, 12, 13, 14, 15};
@@ -64,34 +62,34 @@ if (s == 'X')
 for (i = 0; i < 6; i++)
 a[i] -= 32;
 }
-c = 1;
 if (j < 16)
 {
 if (j >= 10)
 lim_itoa(a, n, j);
 else
-putchar(j + '0');
-return (1);
+strapd(buf, (j + '0'));
+return;
 }
 rem = j % 16;
 j /= 16;
-c += hex_f(j, s);
+hex_f(buf, j, s);
 if (rem >= 10)
-lim_itoa(a, n, rem);
+lim_itoa(buf, a, n, rem);
 else
-putchar(rem + '0');
-return (c);
+strapd(buf, (rem + '0'));
+return;
 }
 
 /**
  *lim_itoa - a limited itoa function that converts
  *an int btw 10 and 15 to its corresponding alphabet
+ *@buf: current buffer
  *@a: array of alphabets
  *@n: array of numbers
  *@j:  number to search for or convert
  *Return: void
  */
-void lim_itoa(char a[], unsigned int n[], unsigned int j)
+void lim_itoa(char buf[], char a[], unsigned int n[], unsigned int j)
 {
 int i;
 char tmp;
@@ -100,7 +98,7 @@ while (i < 6)
 if (n[i] == j)
 {
 tmp = a[i];
-putchar(tmp);
+strapd(buf, tmp);
 break;
 }
 else

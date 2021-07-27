@@ -8,50 +8,70 @@
 int _printf(const char *format, ...)
 {
 va_list ap;
-int n;
-int i;
 int j;
-char s;
-char f;
+int b;
+char buf[1024];
 i = 0;
-n = 0;
-while (format[i] != '\0')
-i++;
+buf[0] = '\0';
 va_start(ap, format);
-for (j = 0; j < i; j++)
+for (j = 0; format[j] != '\0'; j++)
 {
 if (format[j] == '%')
 {
 j += 1;
 if (format[j] == '%')
 {
-putchar('%');
-n++;
+strapd(buf, '%');
 continue;
 }
 else
-{
-f = format[j];
-n += swtch_f(f, ap);
+swtch_f(format[j], ap);
 }
+else
+b += strapd(buf, format[j]);
+}
+for (j = 0; buf[j] != '\0' j++)
+continue;
+write(1, &buf, (j + 1));
+return (b);
+}
+
+/**
+ *strapd - appends c to buf
+ *@buf: buf
+ *@c: char to append
+ *Return: void
+ */
+int strapd(char buf[], char c)
+{
+int i;
+i = 0;
+while (buf[i] != '\0')
+i++;
+if (i < 1024)
+{
+buf[i] = c;
+buf[i + 1] = '\0';
+return (i);
 }
 else
 {
-s = format[j];
-putchar(s);
-n++;
+write(1, &buf, 1023);
+i = 0;
+buf[i] = c;
+buf[i + 1] = '\0';
+return (1023 + i);
 }
-}
-return (n);
 }
 
 /**
  *swtch_f - does the conditional op for printf
+ *@buf: current buffer
  *@f: format character
  *@ap: variable of type va_list
  *Return: number of characters printed to stdout
  */
-int swtch_f(char f, va_list ap)
+void swtch_f(char buf[], char f, va_list ap)
 {
 int i, n;
 char *p, s;
@@ -60,37 +80,38 @@ switch (f)
 {
 case 's':
 p = va_arg(ap, char *);
-n = str_f(p);
+str_f(buf, p);
 break;
 case 'c':
 s = (char)va_arg(ap, int);
-n = char_f(s);
+char_f(buf, s);
 break;
 case 'd':
 case 'i':
 i = va_arg(ap, int);
-n = int_f(i);
+int_f(buf, i);
 break;
 case 'b':
 i = va_arg(ap, int);
-n = binary_f(i);
+binary_f(buf, i);
 break;
 case 'u':
 j = va_arg(ap, unsigned int);
-n = usigned_f(j);
+usigned_f(buf, j);
 break;
 case 'o':
 j = va_arg(ap, unsigned int);
-n = oct_f(j);
+oct_f(buf, j);
 break;
 case 'X':
 case 'x':
 j = va_arg(ap, unsigned int);
-n = hex_f(j, f);
+hex_f(buf, j, f);
 break;
 default:
-putchar('%');
-putchar(f);
+strapd(buf, '%');
+strapd(buf, f);
 }
 return (n);
 }
+
