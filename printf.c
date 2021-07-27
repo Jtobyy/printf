@@ -7,45 +7,46 @@
 */
 int _printf(const char *format, ...)
 {
+int i;
 va_list arguments;
 va_start(arguments,format);
 int count = 0;
-while (*format != '\0')
+while (*(format + i) != '\0')
 {
-if (*format == '%')
+if (*(format + i) == '%')
 {
-*format++;
-if (*format == '%')
+i++;
+if (*(format + i) == '%')
 {
 count++;
 putchar('%');
-*format ++;
+i++;
 continue;
 }
-if (*format == 'c')
+else if (*(format + i) == 'c')
 {
 int ch = va_arg(arguments , int);
 count++;
 putchar(ch);
-*format ++;
+i++;
 continue;
 }
-if (*format == 's')
+else if (*(format + i) == 's')
 {
 char* str = va_arg(arguments , char*);
-while(*str != '\0')
+int j=0;
+while(*(str + j) != '\0')
 {
 count ++;
-putchar(*str);
-*str++;
+putchar(*(str + j));
+j++;
 }
-*format ++;
+i++;
 continue;
 }
-return 0;
-}
 count++;
-putchar(*format);
-*format ++;
+putchar(*(format + i));
 }
+}
+return 0;
 }
