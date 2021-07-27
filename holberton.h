@@ -9,11 +9,11 @@
 int _printf(const char *format, ...);
 void str_f(char buf[], char *p);
 void char_f(char buf[], char c);
-void int_f(int i);
+void int_f(char buf[], int i);
 int _pow10(int);
 void add_zeros(char buf[], int n, int p);
 void print_number(char buf[], int n);
-void swtch_f(char buf[], va_list ap);
+void swtch_f(char buf[], char f, va_list ap);
 void binary_f(char buf[], int i);
 void usigned_f(char buf[], unsigned int);
 void print_usigned_number(char buf[], unsigned int n);

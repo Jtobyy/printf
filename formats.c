@@ -12,7 +12,6 @@ int i;
 i = 0;
 for (i = 0; p[i] != '\0'; i++)
 strapd(buf, p[i]);
-}
 return;
 }
 
@@ -45,7 +44,7 @@ return;
  *@j: unsigned integer value
  *Return: no of chars printed
  */
-usigned_f(char buf[], unsigned int j)
+void usigned_f(char buf[], unsigned int j)
 {
 print_usigned_number(buf, j);
 return;

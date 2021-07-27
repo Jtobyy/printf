@@ -11,7 +11,6 @@ va_list ap;
 int j;
 int b;
 char buf[1024];
-i = 0;
 buf[0] = '\0';
 va_start(ap, format);
 for (j = 0; format[j] != '\0'; j++)
@@ -25,12 +24,12 @@ strapd(buf, '%');
 continue;
 }
 else
-swtch_f(format[j], ap);
+swtch_f(buf, format[j], ap);
 }
 else
 b += strapd(buf, format[j]);
 }
-for (j = 0; buf[j] != '\0' j++)
+for (j = 0; buf[j] != '\0'; j++)
 continue;
 write(1, &buf, (j + 1));
 return (b);
@@ -73,7 +72,7 @@ return (1023 + i);
  */
 void swtch_f(char buf[], char f, va_list ap)
 {
-int i, n;
+int i;
 char *p, s;
 unsigned int j;
 switch (f)
@@ -112,6 +111,6 @@ default:
 strapd(buf, '%');
 strapd(buf, f);
 }
-return (n);
+return;
 }
 

@@ -17,7 +17,8 @@ if (n < 0)
 {
 strapd(buf, '-');
 n = 0 - n;
-return (1 + print_number(n));
+print_number(buf, n);
+return;
 }
 while (quo >= 10)
 {
@@ -29,7 +30,7 @@ p = _pow10(i);
 n = (n - (quo *p));
 add_zeros(buf, n, p);
 if (n >= 10)
-print_number(buf, n));
+print_number(buf, n);
 else
 {
 strapd(buf, (n + '0'));
@@ -88,7 +89,7 @@ p = _pow10(i);
 n = (n - (quo *p));
 add_zeros(buf, n, p);
 if (n >= 10)
-print_usigned_number(buf, n));
+print_usigned_number(buf, n);
 else
 {
 strapd(buf, (n + '0'));

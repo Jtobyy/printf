@@ -65,7 +65,7 @@ a[i] -= 32;
 if (j < 16)
 {
 if (j >= 10)
-lim_itoa(a, n, j);
+lim_itoa(buf, a, n, j);
 else
 strapd(buf, (j + '0'));
 return;
