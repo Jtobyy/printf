@@ -11,6 +11,7 @@ va_list ap;
 int j;
 int b;
 char buf[1024];
+b = 0;
 buf[0] = '\0';
 va_start(ap, format);
 for (j = 0; format[j] != '\0'; j++)
@@ -27,7 +28,7 @@ else
 swtch_f(buf, format[j], ap);
 }
 else
-b += strapd(buf, format[j]);
+b = strapd(buf, format[j]);
 }
 for (j = 0; buf[j] != '\0'; j++)
 continue;
@@ -51,7 +52,7 @@ if (i < 1024)
 {
 buf[i] = c;
 buf[i + 1] = '\0';
-return (i);
+return (i + 1);
 }
 else
 {
@@ -59,7 +60,7 @@ write(1, &buf, 1023);
 i = 0;
 buf[i] = c;
 buf[i + 1] = '\0';
-return (1023 + i);
+return (1023 + (i + 1));
 }
 }
 
