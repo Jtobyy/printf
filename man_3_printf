@@ -30,7 +30,7 @@ DESCRIPTION
 %X: unsigned hex int (uses uppercase)
 
 Return value:
-successful: returns a number of characters printed (excluding the null byte)
-error: returns negavtive value 
+successful: returns the number of characters printed (excluding the null byte)
+error: returns negative value 
 
 
