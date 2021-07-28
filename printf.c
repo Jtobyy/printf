@@ -35,7 +35,12 @@ b = strapd(buf, format[j]);
 for (j = 0; buf[j] != '\0'; j++)
 continue;
 write(1, &buf, j);
-return (b);
+while (b >= 1023)
+{
+j += 1023;
+b -= 1023;
+}
+return (j);
 }
 
 /**
@@ -75,40 +80,35 @@ return (1023 + (i + 1));
  */
 void swtch_f(char buf[], char f, va_list ap)
 {
-int i;
-char *p, s;
-unsigned int j;
+char *p;
 switch (f)
 {
 case 's':
-p = va_arg(ap, char *);
+p = va_arg(ap,  char *);
+if (p == NULL)
+str_f(buf,  "(null)");
+else
 str_f(buf, p);
 break;
 case 'c':
-s = (char)va_arg(ap, int);
-char_f(buf, s);
+char_f(buf, (char)va_arg(ap, int));
 break;
 case 'd':
 case 'i':
-i = va_arg(ap, int);
-int_f(buf, i);
+int_f(buf, va_arg(ap, int));
 break;
 case 'b':
-i = va_arg(ap, int);
-binary_f(buf, i);
+binary_f(buf, va_arg(ap, int));
 break;
 case 'u':
-j = va_arg(ap, unsigned int);
-usigned_f(buf, j);
+usigned_f(buf, va_arg(ap, unsigned int));
 break;
 case 'o':
-j = va_arg(ap, unsigned int);
-oct_f(buf, j);
+oct_f(buf, va_arg(ap, unsigned int));
 break;
 case 'X':
 case 'x':
-j = va_arg(ap, unsigned int);
-hex_f(buf, j, f);
+hex_f(buf, va_arg(ap, unsigned int), f);
 break;
 default:
 strapd(buf, '%');
