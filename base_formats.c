@@ -7,9 +7,9 @@
  *@i: given number
  *Return: no of chars printed
  */
-void binary_f(char buf[], int i)
+void binary_f(char buf[], unsigned int i)
 {
-int rem;
+unsigned int rem;
 rem = i % 2;
 if (i == 1)
 {

@@ -98,7 +98,7 @@ case 'i':
 int_f(buf, va_arg(ap, int));
 break;
 case 'b':
-binary_f(buf, va_arg(ap, int));
+binary_f(buf, va_arg(ap, unsigned int));
 break;
 case 'u':
 usigned_f(buf, va_arg(ap, unsigned int));

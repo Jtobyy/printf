@@ -14,7 +14,7 @@ int _pow10(int);
 void add_zeros(char buf[], int n, int p);
 void print_number(char buf[], int n);
 void swtch_f(char buf[], char f, va_list ap);
-void binary_f(char buf[], int i);
+void binary_f(char buf[], unsigned int i);
 void usigned_f(char buf[], unsigned int);
 void print_usigned_number(char buf[], unsigned int n);
 void oct_f(char buf[], unsigned int j);
