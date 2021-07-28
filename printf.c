@@ -13,6 +13,8 @@ int b;
 char buf[1024];
 b = 0;
 buf[0] = '\0';
+if (format == NULL)
+return (-1);
 va_start(ap, format);
 for (j = 0; format[j] != '\0'; j++)
 {
