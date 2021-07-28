@@ -32,7 +32,8 @@ b = strapd(buf, format[j]);
 }
 for (j = 0; buf[j] != '\0'; j++)
 continue;
-write(1, &buf, (j + 1));
+write(1, &buf, j);
+printf("buf[0] is: %c\n", buf[0]);
 return (b);
 }
 
