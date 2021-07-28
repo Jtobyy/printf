@@ -2,6 +2,7 @@
 
 /**
  *print_number - prints an integer
+ *@buf: current buffer
  *@n: number to be printed
  *Return: void
  */
@@ -55,6 +56,7 @@ return (tmp);
 
 /**
  *add_zeros - adds appropratite amount of zeros before digits
+ *@buf: current buffer
  *@n: integer that zeros should be added before
  *@p: Power of MSD of initial integer
  *Return: void
@@ -69,6 +71,7 @@ return;
 
 /**
  *print_usigned_number - prints an unsigned int
+ *@buf: current buffer
  *@n: unsigned int
  *Return: no of chars printed
  */

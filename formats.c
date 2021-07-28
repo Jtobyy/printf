@@ -30,6 +30,7 @@ return;
 
 /**
  *int_f - prints out an integer to stdout
+ *@buf: current buffer
  *@i: character to print
  *Return: number of digits prited
  */
@@ -41,6 +42,7 @@ return;
 
 /**
  *usigned_f - prints out an unsigned integer
+ *@buf: current buffer
  *@j: unsigned integer value
  *Return: no of chars printed
  */

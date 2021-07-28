@@ -114,4 +114,3 @@ strapd(buf, f);
 }
 return;
 }
-
