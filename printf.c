@@ -35,8 +35,9 @@ b = strapd(buf, format[j]);
 for (j = 0; buf[j] != '\0'; j++)
 continue;
 write(1, &buf, j);
-while (b >= 1023)
+while (b > 1023)
 {
+printf("size of j: %d\n", j);
 j += 1023;
 b -= 1023;
 }
@@ -58,16 +59,17 @@ i++;
 if (i < 1024)
 {
 buf[i] = c;
+if (i < 1023)
 buf[i + 1] = '\0';
 return (i + 1);
 }
 else
 {
-write(1, &buf, 1023);
-i = 0;
-buf[i] = c;
-buf[i + 1] = '\0';
-return (1023 + (i + 1));
+printf("buf: %s\n", buf);
+write(1, buf, 1024);
+buf[0] = c;
+buf[1] = '\0';
+return (1024);
 }
 }
 

@@ -15,6 +15,9 @@ int main(void)
 int len;
     int len2;
     unsigned int ui;
+    char *s;
+    char *tmp;
+    char *tmp2;
     void *addr __attribute__((unused));
 
     len = _printf("me: Let's try to printf a simple sentence.\n");
@@ -37,9 +40,17 @@ int len;
     printf("Character:[%c%q s%o%%f~!@#$%^&*()_+?]\n", 'H');
     _printf("Character:my[%s ]\n", "of\0");
     printf("Character:[%s ]\n", "of\0");
-    len =    _printf("%s\n", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-len2 =    printf("%s\n", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
- printf("len: %d, len2: %d", len, len2);
+    s = malloc(sizeof(char) * 727);
+    tmp = malloc(sizeof(char) * 147);
+    tmp2 = malloc(sizeof(char) * 97);
+    s  = "goLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volup";
+    tmp = 
+    len = _printf("%s%d", s, 123456789);
+    len2 =    printf("%s%d", s, 123456789);
+    len = printf(str, "you", "normally does preprocessing, compilation, assembly", '"', '"', "For example,", tmp, 'o', tmp2, 8);
+    len2 =  printf(str, "you", "normally does preprocessing, compilation, assembly", '"', '"', "For example,", tmp, 'o', tmp2, 8);
+
+ printf("len: %d, len2: %d\n", len, len2);
     ui = -1 * ((unsigned int)INT_MAX + 1024);
     addr = (void *)0x7ffe637541f0;
     _printf("Negative:[%d]\n", 762534);
