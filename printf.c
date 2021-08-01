@@ -39,8 +39,18 @@ strapd(buf, format[j], bp);
 for (j = 0; buf[j] != '\0'; j++)
 continue;
 write(1, &buf, j);
+<<<<<<< HEAD
 *bp = *bp + j;
 return (b);
+=======
+while (b > 1023)
+{
+printf("size of j: %d\n", j);
+j += 1023;
+b -= 1023;
+}
+return (j);
+>>>>>>> 8154364b0c0f967330706e3c921eb4bd80c548cb
 }
 
 /**
@@ -86,11 +96,19 @@ return;
 }
 else
 {
+<<<<<<< HEAD
 write(1, &buf, 1024);
 *bp = *bp + 1024;
 buf[0] = c;
 buf[1] = '\0';
 return;
+=======
+printf("buf: %s\n", buf);
+write(1, buf, 1024);
+buf[0] = c;
+buf[1] = '\0';
+return (1024);
+>>>>>>> 8154364b0c0f967330706e3c921eb4bd80c548cb
 }
 }
 

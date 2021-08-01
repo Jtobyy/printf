@@ -22,6 +22,8 @@ n = 0 - n;
 print_number(buf, n, bp);
 return;
 }
+if (quo >= 10)
+{
 while (quo >= 10)
 {
 quo = quo / 10;
@@ -30,7 +32,12 @@ i++;
 strapd(buf, (quo + '0'), bp);
 p = _pow10(i);
 n = (n - (quo *p));
+<<<<<<< HEAD
 add_zeros(buf, n, p, bp);
+=======
+add_zeros(buf, n, p);
+}
+>>>>>>> 8154364b0c0f967330706e3c921eb4bd80c548cb
 if (n >= 10)
 print_number(buf, n, bp);
 else
@@ -49,6 +56,8 @@ int _pow10(int n)
 {
 int i;
 int tmp;
+if (n == 0)
+return (0);
 tmp = 10;
 for (i = 1; i < n; i++)
 tmp *= 10;
