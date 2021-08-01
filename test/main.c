@@ -1,5 +1,8 @@
 #include "holberton.h"
+<<<<<<< HEAD
+=======
 
+>>>>>>> 8154364b0c0f967330706e3c921eb4bd80c548cb
 #include <limits.h>
 #include <stdio.h>
 #include <limits.h>
@@ -15,6 +18,7 @@ int main(void)
 int len;
     int len2;
     unsigned int ui;
+<<<<<<< HEAD
     void *addr __attribute__((unused));
 
     len = _printf("Let's try to printf a simple sentence.\n");
@@ -22,6 +26,24 @@ int len;
     _printf("Character:[%c]\n", 'H');
     printf("Character:[%c]\n", 'H');
     _printf("Length:[%d, %i]\n", len, len2);
+=======
+    char *s;
+    char *tmp;
+    char *tmp2;
+    void *addr __attribute__((unused));
+
+    len = _printf("me: Let's try to printf a simple sentence.\n");
+    len2 = printf("Let's try to printf a simple sentence.\n");
+    _printf("me: Length:[%d, %i]\n", len, len2);
+    printf("Length:[%d, %i]\n", len, len2);
+    len = _printf("me: Character:[%c]\n", 'H');
+    len2 = printf("Character:[%c]\n", 'H');
+    _printf("me: Length:[%d, %i]\n", len, len2);
+    printf("Length:[%d, %i]\n", len, len2);
+    len = _printf("me: [%d, %i]\n", 03, 10);
+    len2 = printf("[%d, %i]\n", 03, 10);
+    _printf("me: Length:[%d, %i]\n", len, len2);
+>>>>>>> 8154364b0c0f967330706e3c921eb4bd80c548cb
     printf("Length:[%d, %i]\n", len, len2);
     _printf("String:[%s]\n", "I am a string !");
     printf("String:[%s]\n", "I am a string !");
@@ -31,9 +53,23 @@ int len;
     printf("Character:[%c%q s%o%%f~!@#$%^&*()_+?]\n", 'H');
     _printf("Character:my[%s ]\n", "of\0");
     printf("Character:[%s ]\n", "of\0");
+<<<<<<< HEAD
     len =    _printf("%s\n", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 len2 =    printf("%s\n", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
  printf("len: %d, len2: %d", len, len2);
+=======
+    s = malloc(sizeof(char) * 727);
+    tmp = malloc(sizeof(char) * 147);
+    tmp2 = malloc(sizeof(char) * 97);
+    s  = "goLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volup";
+    tmp = 
+    len = _printf("%s%d", s, 123456789);
+    len2 =    printf("%s%d", s, 123456789);
+    len = printf(str, "you", "normally does preprocessing, compilation, assembly", '"', '"', "For example,", tmp, 'o', tmp2, 8);
+    len2 =  printf(str, "you", "normally does preprocessing, compilation, assembly", '"', '"', "For example,", tmp, 'o', tmp2, 8);
+
+ printf("len: %d, len2: %d\n", len, len2);
+>>>>>>> 8154364b0c0f967330706e3c921eb4bd80c548cb
     ui = -1 * ((unsigned int)INT_MAX + 1024);
     addr = (void *)0x7ffe637541f0;
     _printf("Negative:[%d]\n", 762534);
@@ -60,6 +96,12 @@ len= _printf("Binary:[%b]\n", 98);
   _printf("Len:[%d]\n", len);
    len= _printf("Binary:[%b]\n", 4);
      _printf("Len:[%d]\n", len);
+<<<<<<< HEAD
+    len = printf("%c%c", '\0', '\0');
+    len2 = _printf("%c%c", '\0', '\0');
+    printf("len: %d len2: %d", len, len2);
+=======
    
+>>>>>>> 8154364b0c0f967330706e3c921eb4bd80c548cb
   return (0);
 }
