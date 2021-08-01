@@ -5,20 +5,21 @@
  *its ressult.
  *@buf: current buffer
  *@i: given number
+ *@bp: current char count
  *Return: no of chars printed
  */
-void binary_f(char buf[], unsigned int i)
+void binary_f(char buf[], unsigned int i, int *bp)
 {
 unsigned int rem;
 rem = i % 2;
 if (i == 1)
 {
-strapd(buf, (1 + '0'));
+strapd(buf, (1 + '0'), bp);
 return;
 }
 i /= 2;
-binary_f(buf, i);
-strapd(buf, (rem + '0'));
+binary_f(buf, i, bp);
+strapd(buf, (rem + '0'), bp);
 return;
 }
 
@@ -27,20 +28,21 @@ return;
  *prints it out
  *@buf: current buffer
  *@j: no to be printed or converted
+ *@bp: current char count
  *Return: no of chars printed
  */
-void oct_f(char buf[], unsigned int j)
+void oct_f(char buf[], unsigned int j, int *bp)
 {
 int rem;
 if (j < 8)
 {
-strapd(buf, (j + '0'));
+strapd(buf, (j + '0'), bp);
 return;
 }
 rem = j % 8;
 j /= 8;
-oct_f(buf, j);
-strapd(buf, (rem + '0'));
+oct_f(buf, j, bp);
+strapd(buf, (rem + '0'), bp);
 return;
 }
 
@@ -49,9 +51,10 @@ return;
  *@buf: current buffer
  *@j: unsigned in to be converted
  *@s: indicator to use uppercase or lowercase
+ *@bp: current char count
  *Return: no of chars printed
  */
-void hex_f(char buf[], unsigned int j, char s)
+void hex_f(char buf[], unsigned int j, char s, int *bp)
 {
 unsigned int rem;
 int i;
@@ -65,18 +68,18 @@ a[i] -= 32;
 if (j < 16)
 {
 if (j >= 10)
-lim_itoa(buf, a, n, j);
+lim_itoa(buf, a, n, j, bp);
 else
-strapd(buf, (j + '0'));
+strapd(buf, (j + '0'), bp);
 return;
 }
 rem = j % 16;
 j /= 16;
-hex_f(buf, j, s);
+hex_f(buf, j, s, bp);
 if (rem >= 10)
-lim_itoa(buf, a, n, rem);
+lim_itoa(buf, a, n, rem, bp);
 else
-strapd(buf, (rem + '0'));
+strapd(buf, (rem + '0'), bp);
 return;
 }
 
@@ -87,9 +90,10 @@ return;
  *@a: array of alphabets
  *@n: array of numbers
  *@j:  number to search for or convert
+ *@bp: current char count
  *Return: void
  */
-void lim_itoa(char buf[], char a[], unsigned int n[], unsigned int j)
+void lim_itoa(char buf[], char a[], unsigned int n[], unsigned int j, int *bp)
 {
 int i;
 char tmp;
@@ -98,7 +102,7 @@ while (i < 6)
 if (n[i] == j)
 {
 tmp = a[i];
-strapd(buf, tmp);
+strapd(buf, tmp, bp);
 break;
 }
 else
